@@ -11,7 +11,6 @@ def profiles(request):
 
 
 # Create your views here.
-
 def userProfile(request, pk):
     profile = Profile.objects.get(id=pk)
     topSkills = profile.skill_set.exclude(description__exact='')
