@@ -30,15 +30,28 @@
 {#    </ul>#}
 {#{% endif %}#}
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert--{{ message.tags }}">
-            <p class="alert__message">{{ message }}</p>
-            <button class="alert__close">x</button>
-        </div>
-    {% endfor %}
-{% endif %}
+{#{% if messages %}#}
+{#    {% for message in messages %}#}
+{#        <div class="alert alert--{{ message.tags }}">#}
+{#            <p class="alert__message">{{ message }}</p>#}
+{#            <button class="alert__close">x</button>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#{% endif %}#}
 
+{% if messages %}
+
+    {% for message in messages %}
+        <center>
+            <div id="id_alert" class="alert  alert--{{ message.tags }}">
+                {#        <p class="alert__message">{{message}}</p>#}
+                {{ message }}
+                <button class="alert__close">x</button>
+            </div>
+        </center>
+    {% endfor %}
+
+{% endif %}
 {% block content %}
 
 {% endblock content %}

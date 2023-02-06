@@ -9,6 +9,14 @@
   margin-bottom: 1rem;
   margin-right: 1rem;
 }
+/*.alert {*/
+/*  position: fixed;*/
+/*  left: 50%;*/
+/*  top: 120px;*/
+/*  transform: translate(-50%, -50%);*/
+
+/*  z-index: 99999;*/
+/*}*/
 
 .alert,
 .alert > .alert__message {
@@ -28,6 +36,7 @@
 .alert.alert--success > .alert__message {
   background-color: var(--color-success-bg);
   color: var(--color-success);
+
 }
 
 .alert > .alert__close {
