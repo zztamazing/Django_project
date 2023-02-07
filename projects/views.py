@@ -2,21 +2,22 @@ from django.shortcuts import render, redirect
 from .models import Project
 from .forms import ProjectForm
 from django.contrib.auth.decorators import login_required
+
+from .utils import searchProjects
+
+
 # Create your views here.
-from django.http import HttpResponse
 
 
 def projects(request):
     # return HttpResponse(f'<h1>Welcome to page1</h1>')
-    projectList = Project.objects.all()
-    page = 'projects'
-    number = 1
+
+
+    projectList, search_query = searchProjects(request)
 
     context = {
-        'page': page,
-        'number': number,
         'projects': projectList,
-
+        'search_query': search_query,
     }
     return render(request, 'projects/projects.html', context)
 

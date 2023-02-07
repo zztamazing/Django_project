@@ -5,38 +5,6 @@
 
 
 
-    {#    <h1>{{ page }} templates</h1>#}
-    {##}
-    {#    <table>#}
-    {#        <tr>#}
-    {#            <th>ID</th>#}
-    {#            <th>Project</th>#}
-    {#            <th>Positive Votes</th>#}
-    {#            <th>Votes</th>#}
-    {#            <th>Created time</th>#}
-    {#            <th>Link</th>#}
-    {#            <th>Update</th>#}
-    {#            <th></th>#}
-    {#        </tr>#}
-    {#        {% for project in projects %}#}
-    {#            <tr>#}
-    {#                <td>{{ project.id }}</td>#}
-    {#                <td>{{ project.title }}</td>#}
-    {#                <td>{{ project.vote_ratio }}%</td>#}
-    {#                <td>{{ project.vote_total }}</td>#}
-    {#                <td>{{ project.created }}</td>#}
-    {#                <td><a href="{% url 'project' project.id %}">View</a></td>#}
-    {#                <td><a href="{% url 'update-project' project.id %}">Edit</a></td>#}
-    {#                <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>#}
-    {#            </tr>#}
-    {#        {% endfor %}#}
-    {#    </table>#}
-    {##}
-    {#    <p>#}
-    {#        Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.#}
-    {#    </p>#}
-
-
     <!-- Main Section -->
     <main class="projects">
         <section class="hero-section text-center">
@@ -46,11 +14,11 @@
                 </div>
 
                 <div class="hero-section__search">
-                    <form class="form" action="#" method="get">
+                    <form class="form" action="{% url 'projects' %}" method="get">
                         <div class="form__field">
                             <label for="formInput#search">Search By Projects </label>
-                            <input class="input input--text" id="formInput#search" type="text" name="text"
-                                   placeholder="Search by Project Title"/>
+                            <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                                   value="{{ search_query }}" placeholder="Search by Project Title"/>
                         </div>
 
                         <input class="btn btn--sub btn--lg" type="submit" value="Search"/>
