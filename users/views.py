@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
+
+from projects.utils import paginateQuerysets
 from .models import Profile
 from django.contrib import messages
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
@@ -11,9 +13,15 @@ from .utils import searchProfiles
 def profiles(request):
     # print(searchProfiles(request))
     profiles, search_query = searchProfiles(request)
+
+    profiles, custom_range, num_pages = paginateQuerysets(request, profiles, 3)
+
+
     context = {
         'profiles': profiles,
         'search_query': search_query,
+        'custom_range': custom_range,
+        'num_pages': num_pages,
     }
     return render(request, 'users/profiles.html', context)
 
