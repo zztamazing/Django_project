@@ -21,9 +21,9 @@ def getRoutes(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def getProjects(request):
-    print('**********************************USER:',request.user)
+    print('**********************************USER:', request.user)
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
@@ -34,3 +34,26 @@ def getProject(request, pk):
     project = Project.objects.get(id=pk)
     serializer = ProjectSerializer(project, many=False)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def projectVote(request, pk):
+    project = Project.objects.get(id=pk)
+    # user = request.user.profile
+    data = request.data
+    print('--------------------------------------------------------DATA:', data)
+    serializer = ProjectSerializer(project, many=False)
+    return Response(serializer.data)
+
+
+"""
+23fall = $15322 + $816.17 = $16135.17
+23winter = $15322 + $816.17 = $16135.17
+24fall = $15322 + $816.17 + $800= $16935.17
+24winter = $15322 + $816.17 +$800 = $16935.17          /        23winter = $7661 + $558.15 +$400 = $16935.17  
+
+===>  $66140.68        /          $57824.66   in total
+
+*22spring $15,392.95*
+"""

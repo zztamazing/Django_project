@@ -24,7 +24,7 @@ class Project(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['created']
+        ordering = ['title']
 
 
 class Review(models.Model):
